@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DISS</string>
+    <string name="button_content">Beacon Details</string>
+    <string name="image_description">Treasure image</string>
 </resources>
