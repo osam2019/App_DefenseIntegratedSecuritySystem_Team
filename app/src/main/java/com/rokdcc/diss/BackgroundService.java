@@ -3,6 +3,8 @@ package com.rokdcc.diss;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -16,6 +18,9 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
+
+import java.lang.reflect.Method;
+import java.util.Set;
 
 public class BackgroundService extends Service {
     private int a = 0;
@@ -71,7 +76,19 @@ public class BackgroundService extends Service {
                             WifiManager wifi = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
                             wifi.setWifiEnabled(false);
 
-                            
+                            //connected bluetooth disconnet
+                            Set<BluetoothDevice> pairedDevices = BluetoothAdapter.getDefaultAdapter().getBondedDevices();
+                            if (pairedDevices.size() > 0) {
+
+                                for (BluetoothDevice d: pairedDevices) {
+                                    String deviceName = d.getName();
+                                    String macAddress = d.getAddress();
+                                    Log.i("DISS", "paired device: " + deviceName + " at " + macAddress);
+                                    unpairDevice(d);
+                                    // do what you need/want this these list items
+                                }
+                            }
+
                             Handler mHandler = new Handler(Looper.getMainLooper());
 
                             mHandler.postDelayed(new Runnable() {
@@ -118,5 +135,14 @@ public class BackgroundService extends Service {
         MainActivity.TFLAG = false;
         Log.i("SERVICE TAG ", "==== 서비스 destroyed ===");
 
+    }
+    private void unpairDevice(BluetoothDevice device) {
+        try {
+            Method method = device.getClass().getMethod("removeBond", (Class[]) null);
+            method.invoke(device, (Object[]) null);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
