@@ -7,6 +7,7 @@ import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
@@ -14,10 +15,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.os.Binder;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import org.altbeacon.beacon.BeaconConsumer;
@@ -25,23 +30,30 @@ import org.altbeacon.beacon.BeaconManager;
 import org.altbeacon.beacon.MonitorNotifier;
 import org.altbeacon.beacon.Region;
 
+import java.lang.reflect.Method;
+
 
 public class MainActivity extends AppCompatActivity implements BeaconConsumer {
     protected static final String TAG = "BeaconActivity";
     private static final int PERMISSION_REQUEST_COARSE_LOCATION = 1;
+    public static boolean TFLAG = false;
     private BeaconManager beaconManager;
+    private Intent backStartIntent;
 
      @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ActivityCompat.requestPermissions(this,
-                new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
-                        Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
 
 
-        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+
+         TFLAG = true;
+         backStartIntent = new Intent(MainActivity.this, BackgroundService.class);
+         backStartIntent.setAction("Action1");
+         startService(backStartIntent);
+
+         BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         if (mBluetoothAdapter == null) {
             Log.i("DEBUG_TAG", "NO Bluetooth Error");
@@ -167,12 +179,16 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
             public void didEnterRegion(Region region) {
                 Log.i(TAG, "I just saw an beacon for the first time!");
                 Toast.makeText(getApplicationContext(), "전투통제실 입장, 차단모드 실행", Toast.LENGTH_LONG).show();
+                TFLAG=true;
+                startService(backStartIntent);
             }
 
             @Override
             public void didExitRegion(Region region) {
                 Log.i(TAG, "I no longer see an beacon");
                 Toast.makeText(getApplicationContext(), "전투통제실 퇴장, 차단모드 해제", Toast.LENGTH_LONG).show();
+                TFLAG=false;
+                stopService(backStartIntent);
             }
 
             @Override
@@ -202,5 +218,14 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
         notificationManager.notify(1, notification);
 
     }
-
+    public void onToggleBtClicked(View v){
+         if(TFLAG==false) {
+             TFLAG=true;
+             startService(backStartIntent);
+         }
+         else {
+             TFLAG=false;
+             stopService(backStartIntent);
+         }
+    }
 }
