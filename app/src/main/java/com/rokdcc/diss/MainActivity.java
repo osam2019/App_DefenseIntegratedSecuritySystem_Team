@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
+import android.app.AppOpsManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -21,6 +22,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -61,26 +63,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
         }
          verifyBluetooth();
 
-         //Bluetooth Permission
-         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-             if (this.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                 final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                 builder.setTitle("This app needs location access");
-                 builder.setMessage("Please grant location access so this app can detect beacons in the background.");
-                 builder.setPositiveButton(android.R.string.ok, null);
-                 builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-
-                     @TargetApi(23)
-                     @Override
-                     public void onDismiss(DialogInterface dialog) {
-                         requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
-                                 PERMISSION_REQUEST_COARSE_LOCATION);
-                     }
-
-                 });
-                 builder.show();
-             }
-         }
+         checkPermissions();
 
          beaconManager = BeaconManager.getInstanceForApplication(this);
          beaconManager.bind(this);
@@ -223,5 +206,49 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
              TFLAG=false;
              stopService(backStartIntent);
          }
+    }
+    private void checkPermissions() {
+        AppOpsManager appOps = (AppOpsManager) getSystemService(Context.APP_OPS_SERVICE);
+        int mode = appOps.checkOpNoThrow(
+                AppOpsManager.OPSTR_GET_USAGE_STATS,
+                android.os.Process.myUid(),
+                getPackageName());
+        if (mode == AppOpsManager.MODE_ALLOWED) {
+            return;
+        }
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.enable_usage_stats_title)
+                .setMessage(getString(R.string.enable_usage_stats_message))
+                .setPositiveButton(R.string.enable_usage_stats_ok_button,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                startActivity(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS));
+                            }
+                        })
+                .setCancelable(false)
+                .create()
+                .show();
+
+        //Bluetooth Permission
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (this.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("This app needs location access");
+                builder.setMessage("Please grant location access so this app can detect beacons in the background.");
+                builder.setPositiveButton(android.R.string.ok, null);
+                builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+
+                    @TargetApi(23)
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+                                PERMISSION_REQUEST_COARSE_LOCATION);
+                    }
+
+                });
+                builder.show();
+            }
+        }
     }
 }

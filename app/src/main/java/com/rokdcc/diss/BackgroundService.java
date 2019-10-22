@@ -1,5 +1,7 @@
 package com.rokdcc.diss;
 
+import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -20,6 +22,8 @@ import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class BackgroundService extends Service {
@@ -88,22 +92,28 @@ public class BackgroundService extends Service {
                                     // do what you need/want this these list items
                                 }
                             }
+                            ActivityManager mActivityManager = mActivityManager = (ActivityManager) getApplicationContext().getSystemService(Activity.ACTIVITY_SERVICE);
+                            mActivityManager.killBackgroundProcesses("com.sec.android.app.camera");
+                            
+                            ArrayList<Integer> pids = new ArrayList<Integer>();
+                            ActivityManager  manager = (ActivityManager)getSystemService(Context.ACTIVITY_SERVICE);
+                            List<ActivityManager.RunningAppProcessInfo> listOfProcesses = manager.getRunningAppProcesses();
+                            for (ActivityManager.RunningAppProcessInfo process : listOfProcesses)
+                            {
+                                if (pids.contains(process.pid))
+                                {
+                                    // Ends the app
+                                    manager.restartPackage(process.processName);
+                                }
+                            }
 
                             Handler mHandler = new Handler(Looper.getMainLooper());
-
                             mHandler.postDelayed(new Runnable() {
-
-
                                 @Override
-
                                 public void run() {
-
                                     // 내용
                                     Toast.makeText(getApplicationContext(), "서비스 실행중", Toast.LENGTH_SHORT).show();
-
-
                                 }
-
                             }, 0);
                         }catch(InterruptedException e){
                             e.printStackTrace();
@@ -122,9 +132,6 @@ public class BackgroundService extends Service {
 
         }else if(intent.getAction().equals("Action2")){
         }
-
-
-
         return START_STICKY;
     }
 
@@ -145,4 +152,6 @@ public class BackgroundService extends Service {
             e.printStackTrace();
         }
     }
+
+
 }

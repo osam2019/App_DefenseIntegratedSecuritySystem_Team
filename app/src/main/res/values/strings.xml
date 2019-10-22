@@ -2,4 +2,9 @@
     <string name="app_name">DISS</string>
     <string name="button_content">Beacon Details</string>
     <string name="image_description">Treasure image</string>
+
+    <string name="enable_usage_stats_title">Enable permission</string>
+    <string name="enable_usage_stats_message">Click OK to go to settings to enable the permission necessary to run this app.</string>
+    <string name="enable_usage_stats_ok_button">OK</string>
+
 </resources>
