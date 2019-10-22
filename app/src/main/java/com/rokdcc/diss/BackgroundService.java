@@ -3,9 +3,11 @@ package com.rokdcc.diss;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.wifi.WifiManager;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
@@ -64,6 +66,12 @@ public class BackgroundService extends Service {
                     while(true){
                         try {
                             Thread.sleep(3000);
+
+                            //wifi off
+                            WifiManager wifi = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+                            wifi.setWifiEnabled(false);
+
+                            
                             Handler mHandler = new Handler(Looper.getMainLooper());
 
                             mHandler.postDelayed(new Runnable() {

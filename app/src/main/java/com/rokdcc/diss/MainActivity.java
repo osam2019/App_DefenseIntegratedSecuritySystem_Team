@@ -30,7 +30,6 @@ import org.altbeacon.beacon.BeaconManager;
 import org.altbeacon.beacon.MonitorNotifier;
 import org.altbeacon.beacon.Region;
 
-import java.lang.reflect.Method;
 
 
 public class MainActivity extends AppCompatActivity implements BeaconConsumer {
@@ -44,9 +43,6 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
 
          TFLAG = true;
          backStartIntent = new Intent(MainActivity.this, BackgroundService.class);
