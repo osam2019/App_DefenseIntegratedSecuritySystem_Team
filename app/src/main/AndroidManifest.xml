@@ -25,10 +25,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AuthCompleteActivity"></activity>
-        <activity android:name=".AuthingActivity" />
-        <activity android:name=".PinAuthActivity" />
-        <activity android:name=".FirstAuthActivity" />
+        <activity android:name=".AuthCompleteActivity"
+            android:theme="@style/NotitleTheme"/>
+        <activity android:name=".AuthingActivity"
+            android:theme="@style/NotitleTheme"/>
+        <activity android:name=".PinAuthActivity"
+            android:theme="@style/NotitleTheme"/>
+        <activity android:name=".FirstAuthActivity"
+            android:theme="@style/NotitleTheme"/>
 
         <service
             android:name=".BackgroundService"

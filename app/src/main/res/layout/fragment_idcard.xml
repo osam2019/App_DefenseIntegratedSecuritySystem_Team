@@ -9,9 +9,11 @@
     <!-- TODO: Update blank fragment layout -->
 
 
-    <ImageView
-        android:id="@+id/imageView2"
+    <Button
+        android:id="@+id/CardViewBt"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/idcardimg" />
+        android:scaleType="fitCenter"
+        android:background="@drawable/cardfrontimg"
+       />
 </FrameLayout>
