@@ -2,6 +2,8 @@ package com.rokdcc.diss;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -24,8 +26,11 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.provider.Settings;
+import android.telecom.Call;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import org.altbeacon.beacon.BeaconConsumer;
@@ -42,10 +47,29 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
     private BeaconManager beaconManager;
     private Intent backStartIntent;
 
+    Button ACUBt, HomeBt, CallListBt;
+    IDCardFragment fragment2;
+    ACUFragment fragment1;
+    CallListFragment fragment3;
+    SettingFragment fragment4;
+    FrameLayout fragment_container;
+    FragmentManager fm;
+    private final int F1 = 0;
+    private final int F2 = 1;
+    private final int F3 = 2;
+    private final int F4 = 3;
+
+    public int FRAGMENT_CURSOR = F2;
+
      @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+         init_fragment();
+         ACUBt= findViewById(R.id.imageButton);
+         HomeBt=findViewById(R.id.imageButton2);
+         CallListBt=findViewById(R.id.imageButton3);
 
          TFLAG = true;
          backStartIntent = new Intent(MainActivity.this, BackgroundService.class);
@@ -70,6 +94,20 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
          beaconManager.bind(this);
 
 
+    }
+
+    public void init_fragment() {
+
+        fragment_container = findViewById(R.id.fragment_container);
+        fragment2=new IDCardFragment();
+        fragment1 = new ACUFragment();
+        fragment3=new CallListFragment();
+        fragment4=new SettingFragment();
+        fm = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.add(R.id.fragment_container, fragment2);
+        fragmentTransaction.commit();
+        FRAGMENT_CURSOR = F2;
     }
     // Checking needed permissions
     private void verifyBluetooth() {
@@ -253,5 +291,51 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
                 builder.show();
             }
         }
+    }
+    public void onACUBtClicked (View v){
+        if (FRAGMENT_CURSOR != F1) {
+            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment1);
+            fragmentTransaction.commit();
+            FRAGMENT_CURSOR = F1;
+            ACUBt.setBackgroundResource(R.drawable.listclickedimg);
+            HomeBt.setBackgroundResource(R.drawable.homeunclikedimg);
+            CallListBt.setBackgroundResource(R.drawable.phoneunclickedimg);
+        }
+        return;
+    }
+    public void onHomeBtClicked (View v){
+        if (FRAGMENT_CURSOR != F2) {
+            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment2);
+            fragmentTransaction.commit();
+            FRAGMENT_CURSOR = F2;
+            ACUBt.setBackgroundResource(R.drawable.listunclickedimg);
+            HomeBt.setBackgroundResource(R.drawable.homeclickedimg);
+            CallListBt.setBackgroundResource(R.drawable.phoneunclickedimg);
+        }
+        return;
+    }
+    public void onCallListBtClicked (View v){
+        if (FRAGMENT_CURSOR != F3) {
+            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment3);
+            fragmentTransaction.commit();
+            FRAGMENT_CURSOR = F3;
+            ACUBt.setBackgroundResource(R.drawable.listunclickedimg);
+            HomeBt.setBackgroundResource(R.drawable.homeunclikedimg);
+            CallListBt.setBackgroundResource(R.drawable.phoneclickedimg);
+        }
+        return;
+    }
+    public void onSettingBtClicked(View v){
+        if (FRAGMENT_CURSOR != F4) {
+            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment4);
+            fragmentTransaction.commit();
+            FRAGMENT_CURSOR = F4;
+        }
+
+        return;
     }
 }

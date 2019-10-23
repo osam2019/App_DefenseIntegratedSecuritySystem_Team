@@ -51,7 +51,7 @@
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/settingsicon"
-                android:onClick="onToggleBtClicked" />
+                android:onClick="onSettingBtClicked" />
         </LinearLayout>
 
     </RelativeLayout>
@@ -61,12 +61,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/upperBar"
+        android:orientation="horizontal"
         android:layout_above="@id/menubarlayout">
+
         <FrameLayout
-            android:id="@+id/tab_layout"
+            android:id="@+id/fragment_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:minHeight="?attr/actionBarSize">
+           >
+
         </FrameLayout>
     </LinearLayout>
 
@@ -91,7 +94,8 @@
             android:background="@drawable/listunclickedimg"
             android:text="출입기록"
             android:gravity="bottom|center_horizontal"
-            />
+            android:onClick="onACUBtClicked"
+           />
 
         <Button
             android:id="@+id/imageButton2"
@@ -102,7 +106,8 @@
             android:layout_weight="2"
             android:background="@drawable/homeclickedimg"
             android:text="홈화면"
-            android:gravity="bottom|center_horizontal"/>
+            android:gravity="bottom|center_horizontal"
+            android:onClick="onHomeBtClicked"/>
 
         <Button
             android:id="@+id/imageButton3"
@@ -112,6 +117,7 @@
             android:background="@drawable/phoneunclickedimg"
             android:text="전화하기"
             android:gravity="bottom|center_horizontal"
+            android:onClick="onCallListBtClicked"
             />
     </LinearLayout>
 
