@@ -15,6 +15,6 @@ public class AuthingActivity extends AppCompatActivity {
 
     }
     public void onCloseBtClicked(View v){
-        finish();
+        System.exit(0);
     }
 }

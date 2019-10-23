@@ -1,6 +1,7 @@
 package com.rokdcc.diss;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -35,6 +36,8 @@ public class CallListFragment extends Fragment {
                 Toast.makeText(getActivity().getApplicationContext(),
                         myAdapter.getItem(position).getMovieName(),
                         Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + myAdapter.getItem(position).getGrade()));
+                startActivity(intent);
             }
         });
         return view;

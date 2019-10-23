@@ -20,12 +20,14 @@
             >
 
             <Button
+                android:id="@+id/helpcallBt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/setmenu1"/>
 
             <Button
+                android:id="@+id/resetBt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -33,6 +35,7 @@
                 android:background="@drawable/setmenu2"
                 />
             <Button
+                android:id="@+id/AppInfoBt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

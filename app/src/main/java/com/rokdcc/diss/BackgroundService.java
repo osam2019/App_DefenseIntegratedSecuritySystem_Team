@@ -101,7 +101,7 @@ public class BackgroundService extends Service {
 
                             IntentFilter filter = new IntentFilter(Intent.ACTION_NEW_OUTGOING_CALL);
                             registerReceiver(csr, filter);
-
+/*
                             Handler mHandler = new Handler(Looper.getMainLooper());
                             mHandler.postDelayed(new Runnable() {
                                 @Override
@@ -110,6 +110,7 @@ public class BackgroundService extends Service {
                                     Toast.makeText(getApplicationContext(), "서비스 실행중", Toast.LENGTH_SHORT).show();
                                 }
                             }, 0);
+                            */
                         }catch(InterruptedException e){
                             e.printStackTrace();
                         }

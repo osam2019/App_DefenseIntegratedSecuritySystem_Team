@@ -31,6 +31,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.altbeacon.beacon.BeaconConsumer;
@@ -46,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
     public static boolean TFLAG = false;
     private BeaconManager beaconManager;
     private Intent backStartIntent;
+
+    TextView maintitleText;
 
     Button ACUBt, HomeBt, CallListBt;
     IDCardFragment fragment2;
@@ -71,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
          HomeBt=findViewById(R.id.imageButton2);
          CallListBt=findViewById(R.id.imageButton3);
 
+         maintitleText=findViewById(R.id.maintitle);
          TFLAG = true;
          backStartIntent = new Intent(MainActivity.this, BackgroundService.class);
          backStartIntent.setAction("Action1");
@@ -299,8 +303,9 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
             fragmentTransaction.commit();
             FRAGMENT_CURSOR = F1;
             ACUBt.setBackgroundResource(R.drawable.listclickedimg);
-            HomeBt.setBackgroundResource(R.drawable.homeunclikedimg);
+            HomeBt.setBackgroundResource(R.drawable.homeunclickedimg);
             CallListBt.setBackgroundResource(R.drawable.phoneunclickedimg);
+            maintitleText.setText("출입기록조회");
         }
         return;
     }
@@ -313,6 +318,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
             ACUBt.setBackgroundResource(R.drawable.listunclickedimg);
             HomeBt.setBackgroundResource(R.drawable.homeclickedimg);
             CallListBt.setBackgroundResource(R.drawable.phoneunclickedimg);
+            maintitleText.setText("국방통합보안체계");
         }
         return;
     }
@@ -323,8 +329,9 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
             fragmentTransaction.commit();
             FRAGMENT_CURSOR = F3;
             ACUBt.setBackgroundResource(R.drawable.listunclickedimg);
-            HomeBt.setBackgroundResource(R.drawable.homeunclikedimg);
+            HomeBt.setBackgroundResource(R.drawable.homeunclickedimg);
             CallListBt.setBackgroundResource(R.drawable.phoneclickedimg);
+            maintitleText.setText("전화하기");
         }
         return;
     }
@@ -334,11 +341,13 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
             fragmentTransaction.replace(R.id.fragment_container, fragment4);
             fragmentTransaction.commit();
             FRAGMENT_CURSOR = F4;
+            ACUBt.setBackgroundResource(R.drawable.listunclickedimg);
+            HomeBt.setBackgroundResource(R.drawable.homeunclickedimg);
+            CallListBt.setBackgroundResource(R.drawable.phoneunclickedimg);
+            maintitleText.setText("설정");
         }
 
-        ACUBt.setBackgroundResource(R.drawable.listunclickedimg);
-        HomeBt.setBackgroundResource(R.drawable.homeunclikedimg);
-        CallListBt.setBackgroundResource(R.drawable.phoneunclickedimg);
+
         return;
     }
 }

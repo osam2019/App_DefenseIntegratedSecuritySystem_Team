@@ -14,11 +14,12 @@ public class FirstAuthActivity extends AppCompatActivity {
         setContentView(R.layout.activity_first_auth);
     }
     public void onSubmitBtClicked(View v){
-        startActivity(new Intent(getApplication(), PinAuthActivity.class)); //로딩이 끝난 후, ChoiceFunction 이동
+        startActivity(new Intent(getApplication(), PinAuthActivity.class));
+        this.finish();//로딩이 끝난 후, ChoiceFunction 이동
 
 
     }
     public void onCloseBtClicked(View v){
-        finish();
+        System.exit(0);
     }
 }

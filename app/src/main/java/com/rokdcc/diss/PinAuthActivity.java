@@ -14,9 +14,10 @@ public class PinAuthActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pin_auth);
     }
     public void onCloseBtClicked(View v){
-        finish();
+        System.exit(0);
     }
     public void onSubmitBtClicked(View v){
-        startActivity(new Intent(getApplication(), AuthingActivity.class)); //로딩이 끝난 후, ChoiceFunction 이동
+        startActivity(new Intent(getApplication(), AuthingActivity.class));
+        this.finish();//로딩이 끝난 후, ChoiceFunction 이동
     }
 }
