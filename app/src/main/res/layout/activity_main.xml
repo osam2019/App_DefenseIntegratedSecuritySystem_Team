@@ -7,13 +7,69 @@
     android:layout_centerHorizontal="true"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/Toggle"
-        android:layout_above="@id/menubarlayout"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#1ABC9C"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:id="@+id/upperBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp">
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                app:srcCompat="@drawable/logo" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="국방통합보안체계"
+                android:textSize="30sp"/>
+            <Button
+                android:id="@+id/Toggle"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:onClick="onToggleBtClicked"
+                android:text="B" />
+
+            <Button
+                android:id="@+id/Setting"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/settingsicon"
+                android:onClick="onToggleBtClicked" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onToggleBtClicked"
-        android:text="Button" />
+        android:layout_below="@id/upperBar"
+        android:layout_above="@id/menubarlayout">
+        <FrameLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="?attr/actionBarSize">
+        </FrameLayout>
+    </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/menubarlayout"
@@ -27,32 +83,36 @@
         android:paddingRight="10dp"
         android:orientation="horizontal">
 
-        <ImageButton
+        <Button
             android:id="@+id/imageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/listunclickedimg"
-            android:scaleType="fitCenter"
-            android:background="?android:selectableItemBackground"/>
+            android:layout_weight="2"
+            android:background="@drawable/listunclickedimg"
+            android:text="출입기록"
+            android:gravity="bottom|center_horizontal"
+            />
 
-        <ImageButton
+        <Button
             android:id="@+id/imageButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-            app:srcCompat="@drawable/homeclickedimg"
-            android:scaleType="fitCenter"
-            android:background="?android:selectableItemBackground"/>
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="2"
+            android:background="@drawable/homeclickedimg"
+            android:text="홈화면"
+            android:gravity="bottom|center_horizontal"/>
 
-        <ImageButton
+        <Button
             android:id="@+id/imageButton3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/phoneunclickedimg"
-            android:scaleType="fitCenter"
-            android:background="?android:selectableItemBackground"/>
+            android:layout_weight="2"
+            android:background="@drawable/phoneunclickedimg"
+            android:text="전화하기"
+            android:gravity="bottom|center_horizontal"
+            />
     </LinearLayout>
 
 </RelativeLayout>
