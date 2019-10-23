@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
          TFLAG = true;
          backStartIntent = new Intent(MainActivity.this, BackgroundService.class);
          backStartIntent.setAction("Action1");
-         startService(backStartIntent);
+         //startService(backStartIntent);
 
          BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
