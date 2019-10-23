@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="국방통합보안체계"
-                android:textSize="30sp"/>
+                android:textSize="20sp"/>
             <Button
                 android:id="@+id/Toggle"
                 android:layout_width="40dp"

@@ -336,6 +336,9 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
             FRAGMENT_CURSOR = F4;
         }
 
+        ACUBt.setBackgroundResource(R.drawable.listunclickedimg);
+        HomeBt.setBackgroundResource(R.drawable.homeunclikedimg);
+        CallListBt.setBackgroundResource(R.drawable.phoneunclickedimg);
         return;
     }
 }
