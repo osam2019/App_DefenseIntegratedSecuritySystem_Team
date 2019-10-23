@@ -67,12 +67,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/bt1" />
+                android:background="@drawable/bt1"
+                android:onClick="onSubmitBtClicked"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bt2" />
+                android:background="@drawable/bt2"
+                android:onClick="onCloseBtClicked"/>
         </LinearLayout>
     </LinearLayout>
 
