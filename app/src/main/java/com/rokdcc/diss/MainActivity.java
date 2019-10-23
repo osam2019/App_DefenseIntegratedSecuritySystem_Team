@@ -15,6 +15,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Binder;
@@ -67,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
          beaconManager = BeaconManager.getInstanceForApplication(this);
          beaconManager.bind(this);
+
+
     }
     // Checking needed permissions
     private void verifyBluetooth() {

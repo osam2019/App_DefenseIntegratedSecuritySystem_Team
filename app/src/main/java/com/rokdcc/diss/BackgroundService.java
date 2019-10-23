@@ -9,6 +9,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.wifi.WifiManager;
@@ -28,6 +29,7 @@ import java.util.Set;
 
 public class BackgroundService extends Service {
     private int a = 0;
+    private CallStateReceiver csr;
     public BackgroundService() {
 
     }
@@ -42,6 +44,7 @@ public class BackgroundService extends Service {
     public void onCreate() {
         super.onCreate();
 
+        csr=new CallStateReceiver();
     }
 
     @Override
@@ -94,18 +97,10 @@ public class BackgroundService extends Service {
                             }
                             ActivityManager mActivityManager = mActivityManager = (ActivityManager) getApplicationContext().getSystemService(Activity.ACTIVITY_SERVICE);
                             mActivityManager.killBackgroundProcesses("com.sec.android.app.camera");
-                            
-                            ArrayList<Integer> pids = new ArrayList<Integer>();
-                            ActivityManager  manager = (ActivityManager)getSystemService(Context.ACTIVITY_SERVICE);
-                            List<ActivityManager.RunningAppProcessInfo> listOfProcesses = manager.getRunningAppProcesses();
-                            for (ActivityManager.RunningAppProcessInfo process : listOfProcesses)
-                            {
-                                if (pids.contains(process.pid))
-                                {
-                                    // Ends the app
-                                    manager.restartPackage(process.processName);
-                                }
-                            }
+
+
+                            IntentFilter filter = new IntentFilter(Intent.ACTION_NEW_OUTGOING_CALL);
+                            registerReceiver(csr, filter);
 
                             Handler mHandler = new Handler(Looper.getMainLooper());
                             mHandler.postDelayed(new Runnable() {
@@ -141,6 +136,7 @@ public class BackgroundService extends Service {
 
         MainActivity.TFLAG = false;
         Log.i("SERVICE TAG ", "==== 서비스 destroyed ===");
+        this.unregisterReceiver(csr);
 
     }
     private void unpairDevice(BluetoothDevice device) {
