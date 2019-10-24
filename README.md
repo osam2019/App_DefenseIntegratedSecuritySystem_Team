@@ -14,7 +14,7 @@
 # ✨ 앱 미리보기
 
 <p align="center">
-  <img width="700" align="center" src="https://user-images.githubusercontent.com/19756026/67467297-78d6c300-f683-11e9-806f-854e1b7be899.gif" alt="demo"/>
+  <img width="400" align="center" src="https://user-images.githubusercontent.com/19756026/67467297-78d6c300-f683-11e9-806f-854e1b7be899.gif" alt="demo"/>
 </p>
 
 # 🚀 프로젝트 내용
