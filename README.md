@@ -9,7 +9,7 @@
   
 </p>
 
-> Defense Integrated Security System (MDM & AC System)<br /> 국방통합보안체계는 튼튼한 안보와 사용자의 편리함을 제공합니다.
+> Defense Integrated Security System (MDM & AC System)<br /> 국방통합보안체계는 튼튼한 안보와 이용자의 편의성을 제공합니다.
 
 # ✨ 앱 미리보기
 
