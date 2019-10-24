@@ -25,19 +25,19 @@ Generated `README.md`:
 
 Make sure you have [npx](https://www.npmjs.com/package/npx) installed (`npx` is shipped by default since npm `5.2.0`)
 
-개발환경
+# 개발환경
 
 ```sh
 npx readme-md-generator
 ```
 
-주요기능
+# 주요기능
 
 ```sh
 npx readme-md-generator -y
 ```
 
-Use your own `ejs` README template (`-p`):
+# 시스템 구조
 
 ```sh
 npx readme-md-generator -p path/to/my/own/template.md
