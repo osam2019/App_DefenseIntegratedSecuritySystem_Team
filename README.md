@@ -48,8 +48,6 @@ npx readme-md-generator -p path/to/my/own/template.md
 You can find [ejs README template examples here](https://github.com/kefranabg/readme-md-generator/tree/master/templates).
 
 # 🤝 팀원 소개
-
-Contributions, issues and feature requests are welcome.<br />
-Feel free to check [issues page](https://github.com/kefranabg/readme-md-generator/issues) if you want to contribute.
-
-
+### 소.헌.
+공군 헌병 병장 이동형
+육군 소프트웨어개발병 일병 신병륜
