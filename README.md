@@ -9,7 +9,7 @@
   
 </p>
 
-> Defense Integrated Security System<br /> 국방통합보안체계는 제공합니다.
+> Defense Integrated Security System(MDAC System)<br /> 국방통합보안체계는 제공합니다.
 
 # ✨ 앱 미리보기
 
@@ -28,7 +28,9 @@ Make sure you have [npx](https://www.npmjs.com/package/npx) installed (`npx` is 
 ## 개발환경
 
 ```sh
-npx readme-md-generator
+Java 8
+Android Studio
+
 ```
 
 ## 주요기능
