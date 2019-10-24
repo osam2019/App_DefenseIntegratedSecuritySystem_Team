@@ -9,7 +9,7 @@
   
 </p>
 
-> Defense Integrated Security System (MDM & AC System)<br /> 국방통합보안체계는 제공합니다.
+> Defense Integrated Security System (MDM & AC System)<br /> 국방통합보안체계는 튼튼한 안보와 사용자의 편리함을 제공합니다.
 
 # ✨ 앱 미리보기
 
@@ -21,14 +21,9 @@
 ## 주요기능
 
 ```sh
-1. NFC기술을 활용해 스마트 전자공무원증을 통한 출입통제
-2. 블루투스 비콘을 활용한 
-```
-
-## 시스템 구조도
-
-```sh
-npx readme-md-generator -p path/to/my/own/template.md
+1. 비콘 활용 특정 구역 내 모바일 단말기 기능통제
+2. NFC 모바일 전자공무원증 출입통제
+3. 모바일 병사 출타관리
 ```
 
 ## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
@@ -37,8 +32,16 @@ npx readme-md-generator -p path/to/my/own/template.md
 - apk파일을 통한 설치
 
 ## 사용법 (Getting Started)
+```sh
+APK 설치 후 앱 실행
+사용자 등록 후 사용
+NFC 기능 켠 후 출입통제체계 태그
+비콘 영역 진입시 자동 기능차단
+```
 
 ## 파일 정보 및 목록 (File Manifest)
+Controller Class 
+```sh
 ACUFragment.java
 AuthCompleteActivity.java
 AuthingActivity.java
@@ -53,10 +56,14 @@ PinAuthActivity.java
 SampleData.java
 SettingFragment.java
 SplashActivity.java
-
+```
+전화 관련 라이브러리
+```sh
 ITelephony.aidl
 ITelephony.java
-
+```
+레이아웃 파일
+```sh
 activity_auth_complete.xml
 activity_authing.xml
 activity_first_auth.xml
@@ -68,6 +75,8 @@ fragment_call_list.xml
 fragment_idcard.xml
 fragment_setting.xml
 item_listview.xml
+```
+
 ## 저작권 및 사용권 정보 (Copyright / End User License)
 ```sh
 MIT Licence
