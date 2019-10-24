@@ -40,7 +40,7 @@ NFC 기능 켠 후 출입통제체계 태그
 ```
 
 ## 파일 정보 및 목록 (File Manifest)
-Controller Class 
+- Controller Class 
 ```sh
 ACUFragment.java
 AuthCompleteActivity.java
@@ -57,12 +57,12 @@ SampleData.java
 SettingFragment.java
 SplashActivity.java
 ```
-전화 관련 라이브러리
+- 전화 관련 라이브러리
 ```sh
 ITelephony.aidl
 ITelephony.java
 ```
-레이아웃 파일
+- 레이아웃 파일
 ```sh
 activity_auth_complete.xml
 activity_authing.xml
