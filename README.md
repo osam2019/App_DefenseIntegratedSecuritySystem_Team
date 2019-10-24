@@ -9,7 +9,7 @@
   
 </p>
 
-> Defense Integrated Security System(MDAC System)<br /> 국방통합보안체계는 제공합니다.
+> Defense Integrated Security System (MDM & AC System)<br /> 국방통합보안체계는 제공합니다.
 
 # ✨ 앱 미리보기
 
@@ -18,26 +18,6 @@
 </p>
 
 # 🚀 프로젝트 내용
-
-## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
-## 설치 안내 (Installation Process)
-## 사용법 (Getting Started)
-## 파일 정보 및 목록 (File Manifest)
-## 저작권 및 사용권 정보 (Copyright / End User License)
-## 배포자 및 개발자의 연락처 정보 (Contact Information)
-## 알려진 버그 (Known Issues)
-## 문제 발생에 대한 해결책 (Troubleshooting)
-## 크레딧 (Credit)
-## 업데이트 정보 (Change Log)
-
-## 개발환경
-
-```sh
-Java 8
-Android Studio
-
-```
-
 ## 주요기능
 
 ```sh
@@ -50,6 +30,35 @@ Android Studio
 ```sh
 npx readme-md-generator -p path/to/my/own/template.md
 ```
+
+## 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
+Android 5.0 이상을 구동하고 있는 스마트폰이라면 설치하여 사용할 수 있습니다.
+## 설치 안내 (Installation Process)
+apk파일을 통한 설치
+
+## 사용법 (Getting Started)
+
+## 파일 정보 및 목록 (File Manifest)
+
+## 저작권 및 사용권 정보 (Copyright / End User License)
+```sh
+MIT Licence
+```
+<a href="https://github.com/kefranabg/readme-md-generator/blob/master/LICENSE">
+    <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg" target="_blank" />
+</a>
+## 배포자 및 개발자의 연락처 정보 (Contact Information)
+
+## 알려진 버그 (Known Issues)
+- 안드로이드 EMM API, 삼성 Knox SDK를 인증된 조직에서 사용가능하여 완벽 차단이 불가
+
+## 문제 발생에 대한 해결책 (Troubleshooting)
+추후 
+
+## 크레딧 (Credit)
+
+## 업데이트 정보 (Change Log)
+- 1.0.0
 
 # 🤝 팀원 소개
 ### 소.헌.
