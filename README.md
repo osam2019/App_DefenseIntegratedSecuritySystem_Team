@@ -77,14 +77,13 @@ MIT Licence
 </a>
 
 ## 배포자 및 개발자의 연락처 정보 (Contact Information)
+신병륜 nj298@kumoh.ac.kr
 
 ## 알려진 버그 (Known Issues)
 - 안드로이드 EMM API, 삼성 Knox SDK등 MDM관련 도구들은 인증된 조직에서 사용가능하여 완벽 차단이 불가(issue.#10001)
 
 ## 문제 발생에 대한 해결책 (Troubleshooting)
 - 추후 인증을 통해 SDK 도입 예정(issue.#10001)
-
-## 크레딧 (Credit)
 
 ## 업데이트 정보 (Change Log)
 - 1.0.0
