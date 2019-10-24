@@ -13,17 +13,12 @@
 
 # ✨ 앱 미리보기
 
-`readme-md-generator` is able to read your environment (package.json, git config...) to suggest you default answers during the `README.md` creation process:
-
 <p align="center">
   <img width="700" align="center" src="https://user-images.githubusercontent.com/9840435/60266022-72a82400-98e7-11e9-9958-f9004c2f97e1.gif" alt="demo"/>
 </p>
 
-Generated `README.md`:
-
 # 🚀 프로젝트 내용
 
-Make sure you have [npx](https://www.npmjs.com/package/npx) installed (`npx` is shipped by default since npm `5.2.0`)
 
 ## 개발환경
 
@@ -36,7 +31,8 @@ Android Studio
 ## 주요기능
 
 ```sh
-npx readme-md-generator -y
+1. NFC기술을 활용해 스마트 전자공무원증을 통한 출입통제
+2. 블루투스 비콘을 활용한 
 ```
 
 ## 시스템 구조도
@@ -45,11 +41,8 @@ npx readme-md-generator -y
 npx readme-md-generator -p path/to/my/own/template.md
 ```
 
-You can find [ejs README template examples here](https://github.com/kefranabg/readme-md-generator/tree/master/templates).
-
 # 🤝 팀원 소개
 ### 소.헌.
-#### 공군 헌병 병장 이동형
+공군 헌병 병장 이동형
 <br/>
-
-#### 육군 소프트웨어개발병 일병 신병륜
+육군 소프트웨어개발병 일병 신병륜
